@@ -1,0 +1,12 @@
+<div
+ class="cssTask"
+ [ngClass]="{reminder: task.reminder}" 
+ (dblclick)="onReminderTrueOrFalse(task)" > <!--con [ngClass] hagarro la clase .reminder de css y lo digo que funciona si task.reminder es true  -->
+ <p>{{task.text}}</p>
+ <button
+  class="cssButton" 
+  (click)="onDelete(task)"
+ >x</button> <!-- en "(click)" traigo la funcion onDelete que cree , como esa funcion me va pedir un argumento le pongo "tarea"  -->
+    <p>{{task.day}}</p>
+</div>
+

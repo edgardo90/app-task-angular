@@ -1,0 +1,6 @@
+.header {
+    display: flex;  /* hace que el button esta alado del texto*/
+    justify-content: space-between;  /*dejo un espacio entre el texto y el button  */
+    align-items: center;  /*centro los items  */
+    margin-bottom: 20px;  /*dejo un espacio abajo  */
+}

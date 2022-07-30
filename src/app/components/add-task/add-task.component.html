@@ -1,0 +1,34 @@
+<div class="addForm">
+    <form (ngSubmit)="onSubmit()" *ngIf="taskOpenOrClose" >  <!--con *ngIf="taskOpenOrClose"  si se cumple la condicion va a mostrar el formulario en caso contraio no lo muestra  -->
+        <div class="form-control"><!-- las clases que estan form son clases globales de styles.css  -->
+            <label for="text">Ingrese la tarea:</label>
+            <input
+                type="text"
+                name="task"
+                id="task" 
+                [(ngModel)]="text"
+            >
+            <p style="color: red ; font-size: 13px;"> {{text ? '' : 'ingrese la tarea'}} </p> <!-- esto es para controlar el formulario  -->
+        </div>
+        <div class="form-control">
+            <label for="date">Ingrese la fecha de la tarea:</label>
+            <input
+                type="date"
+                name="date"
+                id="date"
+                [(ngModel)]="day"
+            >
+            <p style="color: red ; font-size: 13px;"> {{day ? '' : 'ingrese la fecha'}} </p> <!-- esto es para controlar el formulario  -->
+        </div>
+            <div class="form-control form-control-check">
+                <label for="reminder">Marcarlo como recordatorio:</label>
+                <input
+                    type="checkbox"
+                    name="reminder"
+                    id="reminder"
+                    [(ngModel)]="reminder"
+                >
+            </div>
+            <button type="submit" class="btn btn-block">Crear la tarea</button>
+    </form>
+</div>

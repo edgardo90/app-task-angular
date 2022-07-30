@@ -1,0 +1,13 @@
+<!-- Primera forma que lo hice , funciona -->
+<div  >
+    <!--  -->
+    <p class="cssTask"  *ngFor="let tarea of tasks" > <!-- con " *ngFor="let tarea of tasks " lo que hacemos crear una variable llamada "tarea" del "tasks" del componente task.ts  -->
+        {{tarea.text}}
+        <button class="cssButton" 
+        (click)="onDelete(tarea)" 
+        >x</button> <!-- en "(click)" traigo la funcion onDelete que cree , como esa funcion me va pedir un argumento le pongo "tarea"  -->
+        <br>
+        {{tarea.day}}
+    </p>
+</div>
+

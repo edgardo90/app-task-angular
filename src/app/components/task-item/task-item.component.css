@@ -1,0 +1,43 @@
+.cssTask{
+    background-color: rgb(184, 180, 180);
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.cssTask:active{ /*le de doy una animacion de click cuando se hace clik  */
+    transform: scale(0.95);
+}
+
+.cssTask.reminder{
+    border-left: 5px solid green;
+}
+/* .cssTask.ejem{
+    border-left: 5px solid red;
+} */
+
+.cssButton{
+    margin-left: 90%;
+    font-size: 15px;
+    border: none;
+    color: rgb(255, 0, 0);
+    cursor: pointer;
+  background: none;
+  background-color: white;
+  border-radius: 9999px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.cssButton:active { /* cuando se toque va hacer una animacion de click  */
+    transform: scale(0.8); 
+}
+.cssButton:hover{
+    background-color: red;
+    color: white;
+    /* padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 6px;
+  padding-bottom: 6px; */
+  /* font-size: 18px; */
+}

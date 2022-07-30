@@ -1,0 +1,11 @@
+<div class="header"> <!-- traigo la clase que cree en este componente(header.css) , que se llama .header  -->
+    <h1>{{title}}</h1>
+    <app-button
+       color=" {{taskOpenOrClose ? 'red' : '#2980b9' }} " 
+       text="{{taskOpenOrClose  ? 'cerrar tarea' : 'agregar tarea'}} "
+       (buttonClick)="addTaskOrclose()" >
+    </app-button> <!--traigo el button.components ,el nombre que tenga "text="" , va ser el nombre del button  -->  
+    <!-- voy utilizar el "Output() buttonClick"(del button.ts) y va llamar  la funcion "addTask()" (de header.ts)     -->
+    <!--en  text="{{taskOpenOrClose  ? 'cerrar tarea' : 'agregar tarea'}} " si es true va ser un string " cerrar ..." sino va ser un string "agregar ..."   -->
+    
+</div>
