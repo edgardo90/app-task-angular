@@ -17,7 +17,7 @@ export class TaskItemComponent implements OnInit {
   
 
   ngOnInit(): void {
-    // console.log(this.task) // me va a mostrar uno por uno cada "tarea"(task)
+    console.log(this.task) // me va a mostrar uno por uno cada "tarea"(task)
   }
 
 
