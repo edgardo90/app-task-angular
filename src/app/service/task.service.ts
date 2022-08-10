@@ -21,16 +21,38 @@ const httpOption = { // esto es para decir que envio un json a la aplicacion , "
 export class TaskService {
   private apiUrl = "http://localhost:3005/tasks"
   private apiUrlAllTask = "http://localhost:3005/tasks" // aca va estar la url para traer todas las tareas que estan en db.json
+  private urltaskBack = "http://localhost:8080/task"; // url de mi back 
 
   constructor (private http:HttpClient // traigo aca el HttpClient que importe
     ) { }
   
 
+    //aca comienza las rutas con mi back creado en java
+    getAllTasksBack():Observable<Task[]>{ // traigo las task de mi base de datos
+      return this.http.get<Task[]>(this.urltaskBack+"/all") // le agrego esta extencion "/all" para traer todas mis task
+    }
+  
+    postBackTasK(task:Task):Observable<Task>{ // funcion para guardar la task en mi base de datos del back que cree
+      return this.http.post<Task>(this.urltaskBack+"/create" , task, httpOption )
+    }
+  
+    deletedBackTask(task:Task): Observable<Task>{ // funcion para eleminar la task de mi base de datos
+      const urlTaskDeleted = `${this.urltaskBack}/deleted/${task.id}` ; // en esta variable va tener la ruta del back mas el id del "task"
+      return this.http.delete<Task>(urlTaskDeleted);
+    }
+  
+    putReminderBack(task:Task):Observable<Task> { // creo el service de put para task.reminder(lo cambia true)
+      const urlTaskId = `${this.urltaskBack}/putreminder/${task.id}`
+      return this.http.put<Task>(urlTaskId , task , httpOption) // "EN TEORIA CON httpOption(que cree) le digo como lo tiene que manejar "
+    }
+
+
+    
+
+  //aca esta el metodo viejo , que utilizo la base de datos emulada 
   getTask(): Observable<Task[]>{ // para manejar la sincronia utilizo el "Observable"  , "Task[]" es la interface y le digo que es de tipo array
-    // const taskArr = of(arrayTASKS)// esto era un ejemplo para traer el array de tareas estatico
     return this.http.get<Task[]>(this.apiUrlAllTask) // acatraio todas las tareas
   }
-
 
   deleteTask(task:Task): Observable<Task>{ // creo el service delete
     const url = `${this.apiUrl}/${task.id}` // va ser por su id , esto tambien puede ser asi : this.apiUrl + "/" + task.id
@@ -45,5 +67,10 @@ export class TaskService {
   postAddTask(task:Task): Observable<Task>  { // service para el post de crear una tarea
     return this.http.post<Task>(this.apiUrl ,task , httpOption)
   }
+  //aca termina el metodo viejo
+
+
+
+
   
 }

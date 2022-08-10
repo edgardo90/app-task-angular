@@ -1,12 +1,12 @@
 <!-- esto es otra forma de hacerlo -->
 
 <app-header></app-header>  <!-- en este header se encuentra el titulo y el button.component -->
-<app-add-task (onAddTask)="addTask($event)" ></app-add-task>
+<app-add-task (onAddTask)="addTaskBack($event)" ></app-add-task>
 <app-task-item
   *ngFor="let tarea of tasks "
   [task] = "tarea"
-  (onDeleteTask)="deleteTask(tarea)"
-  (onChangeReminder)="changeReminder(tarea)"
+  (onDeleteTask)="deletedTaskBack(tarea)"
+  (onChangeReminder)="changeReminderBack(tarea)"
 ><!-- con " *ngFor="let tarea of tasks " lo que hacemos crear una variable llamada "tarea" del "tasks" del componente task2.ts , [task] es el nombre que denomine en task-item.ts  -->
 </app-task-item> <!-- onDeleteTask es el nombre del @Output , "deleteTask()" es nombre de la funcion task2.ts y como pide un argumento en este caso va ser "tarea"  -->
 <!--(onChangeReminder) es el nombre del @Output de task-item.ts , "changeReminder()" es nombre de la funcion task2.ts  -->
