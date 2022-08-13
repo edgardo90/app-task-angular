@@ -21,7 +21,7 @@ const httpOption = { // esto es para decir que envio un json a la aplicacion , "
 export class TaskService {
   private apiUrl = "http://localhost:3005/tasks"
   private apiUrlAllTask = "http://localhost:3005/tasks" // aca va estar la url para traer todas las tareas que estan en db.json
-  private urltaskBack = "http://localhost:8080/task"; // url de mi back 
+  private urltaskBack = "https://app-tasks-java.herokuapp.com/task"; // url de mi back 
 
   constructor (private http:HttpClient // traigo aca el HttpClient que importe
     ) { }
