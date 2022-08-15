@@ -1,15 +1,29 @@
 <!-- esto es otra forma de hacerlo -->
 
 <app-header></app-header>  <!-- en este header se encuentra el titulo y el button.component -->
-<app-add-task (onAddTask)="addTaskBack($event)" ></app-add-task>
-<app-task-item
+<app-add-task (onAddTask)="addTaskBack($event)" ></app-add-task> <!--aca donde esta el formulario para crear la tarea  -->
+
+
+{{cambio()}} <!--funcion que cambia el "loading"  --> 
+
+
+<div *ngIf="loading"><!--*ngIf es un if() , si hay "loading" va ser esto -->
+  <img class="imag" src="https://i.giphy.com/media/3ohhwJbytwUSJyvvHi/giphy.webp" alt="loading...">
+  <p style="text-align: center ;">{{loading}} </p>
+</div>
+
+
+<div *ngIf="!loading"><!--*ngIf es un if() , si no hay "loading" va mostrar las tasks(tareas) -->
+  <app-task-item 
   *ngFor="let tarea of tasks "
   [task] = "tarea"
   (onDeleteTask)="deletedTaskBack(tarea)"
-  (onChangeReminder)="changeReminderBack(tarea)"
-><!-- con " *ngFor="let tarea of tasks " lo que hacemos crear una variable llamada "tarea" del "tasks" del componente task2.ts , [task] es el nombre que denomine en task-item.ts  -->
-</app-task-item> <!-- onDeleteTask es el nombre del @Output , "deleteTask()" es nombre de la funcion task2.ts y como pide un argumento en este caso va ser "tarea"  -->
-<!--(onChangeReminder) es el nombre del @Output de task-item.ts , "changeReminder()" es nombre de la funcion task2.ts  -->
+  (onChangeReminder)="changeReminderBack(tarea)"> <!-- con " *ngFor="let tarea of tasks " lo que hacemos crear una variable llamada "tarea" del "tasks" del componente task2.ts , [task] es el nombre que denomine en task-item.ts  -->
+  </app-task-item>  <!-- onDeleteTask es el nombre del @Output de task-item.ts , "deletedTaskBack()" es nombre de la funcion task2.ts y como pide un argumento en este caso va ser "tarea"  -->
+  <!--(onChangeReminder) es el nombre del @Output de task-item.ts , "changeReminderBack()" es nombre de la funcion task2.ts  -->
+  <p>{{tasks.length === 0 ? "No hay tareas para mostrar" : "" }} </p> <!-- va mostrar este <p> si no hay en el array tasks -->
+</div>
+
 <div style="text-align: center ; margin-top: 30px;">
   <p>Derechos de autor @2022</p>
   <a routerLink="about">Informacion de la aplicacion</a> <!-- aca voy a la ruta "about" que esta about.html  -->

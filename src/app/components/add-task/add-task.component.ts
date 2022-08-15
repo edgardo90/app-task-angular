@@ -44,6 +44,7 @@ export class AddTaskComponent implements OnInit {
     this.text=""; //seteo el text y las demas varibales
     this.day="";
     this.reminder=false;
+    return alert("Tarea creada con exito")
   }
 
 
