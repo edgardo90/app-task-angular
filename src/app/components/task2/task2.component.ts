@@ -12,6 +12,11 @@ import { TaskService } from 'src/app/service/task.service'; // traigo el servici
 })
 export class Task2Component implements OnInit {
   tasks: Task[] = []; // creo "tasks" que va ser la  interface de "Task" de type array  ; va ser igual a un array vacio
+  loading: string = "Cargando..."
+
+  cambio(){ // funcion que setea la variable "loading" con un setTimeOut
+    setTimeout(() => this.loading= ""  ,8000 );// cuando pase ese tiempo setea a un string vacio 
+  }
 
 
   constructor(
@@ -21,8 +26,7 @@ export class Task2Component implements OnInit {
 
 
   ngOnInit(): void {
-    // this.TaskService.getTask().subscribe(value => (this.tasks = value) ) ; // cuando se monta nuestro componente nos va a traer nuestro servicio, el subscribe es un metodo de "Observable"
-    this.TaskService.getAllTasksBack().subscribe(value =>(this.tasks = value , console.log(this.tasks) ) ) ; // get que trae las "tasks" de mi back que cree con base de datos , en el console.log(this.tasks) va traer un array con las 
+    this.TaskService.getAllTasksBack().subscribe(value =>(this.tasks = value , console.log(this.tasks) ) ) ; // get que trae las "tasks" de mi back que cree con base de datos 
   }
 
 
@@ -81,5 +85,6 @@ export class Task2Component implements OnInit {
     this.TaskService.putReminderBack(task).subscribe(); // aca paso la modificacion de "task"  por nuestro service de "TaskService" que esta task.service.ts , guardo el cambio en mi back
     // console.log(task)
   }
+  
 
 }

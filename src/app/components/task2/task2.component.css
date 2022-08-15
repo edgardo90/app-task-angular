@@ -1,0 +1,9 @@
+.imag{
+    margin-top: 0.5%;
+    display:block; /*centro la imagen  */
+    margin-left: auto; /*centro la imagen  */
+    margin-right: auto; /*centro la imagen  */
+    border-radius: 9999px;
+    cursor: progress; /*muestra la flechita del mouese que esta cargando  */
+    height: 40vh ;
+}
