@@ -1,0 +1,32 @@
+<h2>Iniciar sesion</h2>
+<div class="addForm">
+    <form (ngSubmit)="onLogin()"  >  <!--con (ngSubmit) sirve para hacer el sumbit del formulario , en esta caso utilizo onLogin() que cree  -->
+        <div class="form-control"><!-- las clases que estan form son clases globales de styles.css  -->
+            <label for="text">Ingrese nombre de Usuario:</label>
+            <input
+                type="text"
+                name="nombreUsuario"
+                id="nombreUsuario" 
+                [(ngModel)]="nombreUsuario" 
+            > <!--con [(ngModel)] traigo la variable "nombreUsuario" de login.component   -->
+            <p style="color: red ; font-size: 13px;"> {{!nombreUsuario ? "Ingresa usuario" : ""  }} </p> <!-- esto es para controlar el formulario  -->
+        </div>
+        <div class="form-control">
+            <label for="date">Ingrese su contraseña:</label>
+            <input
+                type="text"
+                name="password"
+                id="password"
+                [(ngModel)]="password"
+            >
+            <p style="color: red ; font-size: 13px;"> {{!password ? "ingrse Contraseña" : "" }} </p> <!-- esto es para controlar el formulario  -->
+        </div>
+            <button type="submit" class="btn btn-block">Ingresar</button>
+    </form>
+
+    <div style="text-align: center ; margin-top: 30px;">
+        <p>Derechos de autor @2022</p>
+        <a routerLink="about">Informacion de la aplicacion</a> <!-- aca voy a la ruta "about" que esta about.html  -->
+    </div>
+
+</div>
