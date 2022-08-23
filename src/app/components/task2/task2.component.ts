@@ -1,5 +1,5 @@
 //otra forma de hacerlo
-
+import { Router } from '@angular/router'; // esto seria como el navigate de react
 import { Component, OnInit } from '@angular/core';
 import {Task} from "../../interface-task" // este es el interface de las tareas
 import { TaskService } from 'src/app/service/task.service'; // traigo el servicio "TaskService"
@@ -20,13 +20,20 @@ export class Task2Component implements OnInit {
 
 
   constructor(
-    private TaskService : TaskService // inicializo el servicio que importe que es "TaskService"
+    private TaskService : TaskService, // inicializo el servicio que importe que es "TaskService"
+    private router: Router
   ) { }
 
 
 
   ngOnInit(): void {
-    this.TaskService.getAllTasksBack().subscribe(value =>(this.tasks = value , console.log(this.tasks) ) ) ; // get que trae las "tasks" de mi back que cree con base de datos 
+    this.TaskService.getAllTasksBack().subscribe(value =>(this.tasks = value , console.log(this.tasks) ),// get que trae las "tasks" de mi back que cree con base de datos 
+    err =>{ // muestro los errores 
+      console.log(err.error) // muestro los error por consola
+      if(err.error.message === "Acceso denegado"){ // si el err.error.message es "Acceso denegado"
+        this.router.navigate([""]) // me redige al login
+      }
+    } ) ;  
   }
 
 

@@ -12,11 +12,18 @@ import { Task2Component } from './components/task2/task2.component';
 import { TaskItemComponent } from './components/task-item/task-item.component';
 import { AddTaskComponent } from './components/add-task/add-task.component';
 import { AboutComponent } from './components/about/about.component';
+import { interceptorProvider } from './service/interceptor-service';
+import { LoginComponent } from './components/login/login.component';
+import { Pagina404Component } from './components/pagina404/pagina404.component';
 
 
 const appRoutes:Routes = [
-  {path: "" , component:Task2Component },
-  {path:"about" , component:AboutComponent }
+  {path:"" , component:LoginComponent},
+  // {path:"login" , component:LoginComponent},
+  // {path:"" , redirectTo:"/login" , pathMatch: "full"}, // si no hay nada me redige a la ruta login
+  {path: "tasks" , component:Task2Component },
+  {path:"about" , component:AboutComponent },
+  {path:"**" , component:Pagina404Component}, // si se pone ruta que no heciste va dirirgir al pagina404.component
 ] //
 
 @NgModule({
@@ -29,6 +36,8 @@ const appRoutes:Routes = [
     TaskItemComponent,
     AddTaskComponent,
     AboutComponent,
+    LoginComponent,
+    Pagina404Component,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +45,7 @@ const appRoutes:Routes = [
     FormsModule, // lo importo aca
     RouterModule.forRoot(appRoutes , {enableTracing: true}) , // lo importo aca
   ],
-  providers: [],
+  providers: [ interceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
