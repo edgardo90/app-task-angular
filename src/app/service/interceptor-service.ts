@@ -1,3 +1,5 @@
+//service para controlar el que ingrese la ruta tenga el permiso de USER o de ADMIN
+
 import { HttpEvent, HttpHandler, HttpRequest, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";

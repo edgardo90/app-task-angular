@@ -1,0 +1,49 @@
+<h2>Crea tu usuario</h2>
+<div class="addForm">
+    <form (ngSubmit)="createUser()"   >  <!--con (ngSubmit) sirve para hacer el sumbit del formulario , en esta caso utilizo onLogin() que cree  -->
+        <div class="form-control"><!-- las clases que estan form son clases globales de styles.css  -->
+            <label for="text">Ingresa tu nombre:</label>
+            <input
+                type="text"
+                name="nombre"
+                id="nombre"
+                [(ngModel)]="nombre"
+            > <!--con [(ngModel)] traigo la variable "nombreUsuario" de login.component   -->
+            <p style="color: red ; font-size: 13px;"> {{!nombre ? "ingrese nombre" : "" }} </p> <!-- esto es para controlar el formulario  -->
+        </div>
+        <div class="form-control">
+            <label for="text">Ingrese su nombre de usuario:</label>
+            <input
+                type="text"
+                name="nombreUsuario"
+                id="nombreUsuario"
+                [(ngModel)]="nombreUsuario" 
+            > 
+            <p style="color: red ; font-size: 13px;"> {{!nombreUsuario ? "ingrese nombre de usuario" : "" }} </p> <!-- esto es para controlar el formulario  -->
+        </div>
+        <div class="form-control">
+            <label for="text">Ingrese su email:</label>
+            <input
+                type="email"
+                name="email"
+                id="email"
+                [(ngModel)]="email" 
+            > 
+            <p style="color: red ; font-size: 13px;"> {{!email ? "Ingrese email" : ""}} </p> <!-- esto es para controlar el formulario  -->
+        </div>
+        <div class="form-control">
+            <label for="date">Ingrese su contraseña:</label>
+            <input
+                type="password"
+                name="password"
+                id="password"
+                [(ngModel)]="password"
+            >
+            <p style="color: red ; font-size: 13px;"> {{!password ? "Ingrese contraseña" :""}} </p> <!-- esto es para controlar el formulario  -->
+        </div>
+            <button type="submit" class="btn btn-block">Crear Usuario</button>
+    </form>
+
+    <div style="text-align: center ; margin-top: 30px;">
+        <a routerLink="">Volver al login</a> 
+    </div>

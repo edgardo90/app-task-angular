@@ -1,3 +1,5 @@
+//service para la creacion de nuevo usario y el login
+
 import { Injectable } from '@angular/core';
 import {HttpClient , HttpHandler, HttpHeaders} from "@angular/common/http"  // esto sirve para ser los get y post
 import { Observable ,of} from "rxjs" // libreria que nos permite controlar el async , "observable"

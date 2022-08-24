@@ -12,9 +12,9 @@
             <p style="color: red ; font-size: 13px;"> {{!nombreUsuario ? "Ingresa usuario" : ""  }} </p> <!-- esto es para controlar el formulario  -->
         </div>
         <div class="form-control">
-            <label for="date">Ingrese su contraseña:</label>
+            <label for="date">Ingrese tu contraseña:</label>
             <input
-                type="text"
+                type="password"
                 name="password"
                 id="password"
                 [(ngModel)]="password"
@@ -23,6 +23,12 @@
         </div>
             <button type="submit" class="btn btn-block">Ingresar</button>
     </form>
+
+    <div style="text-align: center ; margin-top: 30px;">
+        <p>No tienes una cuenta?
+            <a routerLink="create/user">Crear una cuenta</a>
+        </p> 
+    </div>
 
     <div style="text-align: center ; margin-top: 30px;">
         <p>Derechos de autor @2022</p>

@@ -3,6 +3,7 @@ import { Router } from '@angular/router'; // esto seria como el navigate de reac
 import { Component, OnInit } from '@angular/core';
 import {Task} from "../../interface-task" // este es el interface de las tareas
 import { TaskService } from 'src/app/service/task.service'; // traigo el servicio "TaskService"
+import { TokenService } from 'src/app/service/token.service'; // tragio el service que tiene mi token
 
 
 @Component({
@@ -13,6 +14,7 @@ import { TaskService } from 'src/app/service/task.service'; // traigo el servici
 export class Task2Component implements OnInit {
   tasks: Task[] = []; // creo "tasks" que va ser la  interface de "Task" de type array  ; va ser igual a un array vacio
   loading: string = "Cargando..."
+  userName!: string // un string que va tener el userName del token
 
   cambio(){ // funcion que setea la variable "loading" con un setTimeOut
     setTimeout(() => this.loading= ""  ,8000 );// cuando pase ese tiempo setea a un string vacio 
@@ -21,19 +23,30 @@ export class Task2Component implements OnInit {
 
   constructor(
     private TaskService : TaskService, // inicializo el servicio que importe que es "TaskService"
-    private router: Router
+    private router: Router,
+    private tokenService:TokenService
   ) { }
 
 
 
   ngOnInit(): void {
-    this.TaskService.getAllTasksBack().subscribe(value =>(this.tasks = value , console.log(this.tasks) ),// get que trae las "tasks" de mi back que cree con base de datos 
+    // this.TaskService.getAllTasksBack().subscribe(value =>(this.tasks = value , console.log(this.tasks) ),// get que trae las "tasks" de mi back que cree con base de datos , con el console.log(this.tasks) voy a ver todas las tareas por consola
+    // err =>{ // muestro los errores 
+    //   console.log(err.error) // muestro los error por consola
+    //   if(err.error.message === "Acceso denegado"){ // si el err.error.message es "Acceso denegado"
+    //     this.router.navigate([""]) // me redige al login
+    //   }
+    // } ) ;
+
+    this.userName = this.tokenService.getUserName(); // la variable "userName" va tener el valor de tokenService.getUserName()
+    this.TaskService.getAllTasksBack().subscribe(value =>(this.tasks = value, this.tasks= this.tasks.filter(el => el.userName === this.userName) ),// get que trae las "tasks" , hago un filter para que solo traiga lo que coincidan con el "userName" 
     err =>{ // muestro los errores 
       console.log(err.error) // muestro los error por consola
       if(err.error.message === "Acceso denegado"){ // si el err.error.message es "Acceso denegado"
         this.router.navigate([""]) // me redige al login
       }
-    } ) ;  
+    } ) ;
+
   }
 
 
