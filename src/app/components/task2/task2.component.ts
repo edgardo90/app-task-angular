@@ -41,8 +41,8 @@ export class Task2Component implements OnInit {
     this.userName = this.tokenService.getUserName(); // la variable "userName" va tener el valor de tokenService.getUserName()
     this.TaskService.getAllTasksBack().subscribe(value =>(this.tasks = value, this.tasks= this.tasks.filter(el => el.userName === this.userName) ),// get que trae las "tasks" , hago un filter para que solo traiga lo que coincidan con el "userName" 
     err =>{ // muestro los errores 
-      console.log(err.error) // muestro los error por consola
-      if(err.error.message === "Acceso denegado"){ // si el err.error.message es "Acceso denegado"
+      console.log(err.error) // muestro el error por consola
+      if(err.error){ // si hay error
         this.router.navigate([""]) // me redige al login
       }
     } ) ;

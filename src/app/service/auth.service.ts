@@ -22,7 +22,7 @@ const httpOption = { // esto es para decir que envio un json a la aplicacion , "
 
 export class AuthService {
 
-  private urlAuth = "http://localhost:8080/auth/" // ruta del back de la parte de crear usuario y el login(y otras rutas)
+  private urlAuth = "https://java-tareas-autenticacion.herokuapp.com/auth/" // ruta del back de la parte de crear usuario y el login(y otras rutas) , "https://java-tareas-autenticacion.herokuapp.com/auth/" , "http://localhost:8080/auth/"
 
   constructor(private http:HttpClient) { } // traigo aca el HttpClient que importe y la denomino "http"
 
