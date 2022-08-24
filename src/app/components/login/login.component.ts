@@ -14,11 +14,11 @@ import {TokenService} from "../../service/token.service";
 export class LoginComponent implements OnInit {
   isLogged = false;
   isLogginFail = false;
-  loginUsuario!: LoginUser;
+  loginUsuario!: LoginUser; // como no va estar inicializado le pongo un singo de admiracion
   nombreUsuario: string =""
   password : string = ""
   roles: string[] = [];
-  errMsj!: string;
+  errMsj!: string; // esto va contener el error que venga del back
 
 
   constructor(private tokenService: TokenService, private authService: AuthService, private router: Router) { }
@@ -33,9 +33,7 @@ export class LoginComponent implements OnInit {
 
   onLogin(): void{
     const {nombreUsuario , password} = this;
-    // this.loginUsuario.nombreUsuario = nombreUsuario;
-    // this.loginUsuario.password = password;
-    const login = {nombreUsuario , password}
+    const login = {nombreUsuario , password} ;
     this.loginUsuario = login;
     console.log(this.loginUsuario)
     this.authService.postLogin(this.loginUsuario).subscribe(data =>{

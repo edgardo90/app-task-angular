@@ -15,6 +15,7 @@ import { AboutComponent } from './components/about/about.component';
 import { interceptorProvider } from './service/interceptor-service';
 import { LoginComponent } from './components/login/login.component';
 import { Pagina404Component } from './components/pagina404/pagina404.component';
+import { CreateUserComponent } from './components/create-user/create-user.component';
 
 
 const appRoutes:Routes = [
@@ -23,6 +24,7 @@ const appRoutes:Routes = [
   // {path:"" , redirectTo:"/login" , pathMatch: "full"}, // si no hay nada me redige a la ruta login
   {path: "tasks" , component:Task2Component },
   {path:"about" , component:AboutComponent },
+  {path:"create/user" , component:CreateUserComponent},
   {path:"**" , component:Pagina404Component}, // si se pone ruta que no heciste va dirirgir al pagina404.component
 ] //
 
@@ -38,6 +40,7 @@ const appRoutes:Routes = [
     AboutComponent,
     LoginComponent,
     Pagina404Component,
+    CreateUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,7 @@ const appRoutes:Routes = [
     FormsModule, // lo importo aca
     RouterModule.forRoot(appRoutes , {enableTracing: true}) , // lo importo aca
   ],
-  providers: [ interceptorProvider],
+  providers: [ interceptorProvider], // el "interceptorProvider"  que importe y que cree lo coloco aca
   bootstrap: [AppComponent]
 })
 export class AppModule { }
